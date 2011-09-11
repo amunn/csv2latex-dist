@@ -1,0 +1,20 @@
+		<dict>
+			<key>content</key>
+			<string>--Applescript direct
+--This script by Alan Munn &lt;amunn@msu.edu&gt;
+--Version 1.1 2010/01/31
+--Copy cells from Excel or other spreadsheet program and
+-- use this script to paste the cells into your LaTeX source
+-- in a variety of different table styles.
+set mainList to {"cells","booktabs", "simple","longtable" }
+choose from list mainList with prompt "Choose a table format"
+if the result is not false then
+	set tablestyle to result as text
+	do shell script  "~/Library/TeXShop/bin/csv2latex" &amp; " " &amp;  tablestyle
+	tell application "System Events" to keystroke "v" using {command down}
+end if
+--End of Applescript
+</string>
+			<key>name</key>
+			<string>Paste Spreadsheet Cells</string>
+		</dict>
